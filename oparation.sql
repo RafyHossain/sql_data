@@ -158,3 +158,24 @@ BEGIN
     );
 END;
 /
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    CURSOR c_emp IS
+        SELECT emp_id, emp_name, salary
+        FROM Employees;
+BEGIN
+
+    FOR emp_record IN c_emp LOOP
+
+        DBMS_OUTPUT.PUT_LINE(
+            'ID: ' || emp_record.emp_id ||
+            ' | Name: ' || emp_record.emp_name ||
+            ' | Salary: ' || emp_record.salary
+        );
+
+    END LOOP;
+
+END;
+/
